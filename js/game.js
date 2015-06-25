@@ -60,6 +60,7 @@ var problems = new Array("A small program written to alter the way a computer op
 
 function create()
 {
+	// game.world.setBounds(0, 0, 1000, 600);
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 
 	starfield = game.add.tileSprite(0, 0, 1000, 600, 'starfield');
@@ -83,6 +84,7 @@ function create()
 	player = game.add.sprite(400, 500, 'ship');
 	player.anchor.setTo(0.5, 0.5);
 	game.physics.enable(player, Phaser.Physics.ARCADE);
+	player.body.collideWorldBounds = true;
 
 	options = game.add.group();
     options.enableBody = true;
@@ -168,7 +170,10 @@ function update()
 	}
 	else if(cursors.right.isDown)
 	{
-		player.body.velocity.x = 200;
+		if(player.body.x >= 770)
+			player.body.velocity.x = 0;
+		else
+			player.body.velocity.x = 200;
 	}
 
 	if(fireButton.isDown)
