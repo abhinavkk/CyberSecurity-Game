@@ -124,7 +124,7 @@ function createOptions()
 	var num = 1;
 	for(var i=0; i<4; ++i)
 	{
-		// pos[i]=Math.floor(((Math.random() * 10) + 1))%4;
+		// position 3 wrong options
 		if(position[quiz]!=i)
 		{
 			var choices = options.create(i*200, 0, index + 'wrong' + num);
@@ -135,7 +135,8 @@ function createOptions()
 		}
 	}
 
-	answer = game.add.sprite((position[quiz]+0.5)*200, 50, index + 'a');
+	//positions the correct option
+	answer = game.add.sprite((position[quiz]+0.5)*200, 50, index + 'a'); 
 	answer.anchor.setTo(0.5, 0.5);
 	game.physics.enable(answer, Phaser.Physics.ARCADE);
 	answer.body.velocity.y = 15;
